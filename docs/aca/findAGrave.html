@@ -18,25 +18,53 @@
             background-image: url("assets/images/eastLawnCemetery.jpg");
             width: 1050px;
             height: 961px;
-            /*            margin-left: 25%;*/
+            margin-left: 25%;
+            position: relative;
+            bottom: 325px;
+            
         }
 
+        .eastControls {
+            width: 10%;
+            clear: left;
+            position: relative;
+            display: inline-block;
+            top: 400px;
+            margin-left: 100px;
+        }
+        
+        .eastControls p {
+            position: relative;
+            right: 75px;
+            padding-top: 20px;
+        }
+
+        input.slider {
+            position: relative;
+            width: 400px;
+            right: 90px
+        }
     </style>
 </head>
 
 <body>
     <h1>Find a Grave</h1>
 
-    <h1>East Lawn</h1>
+    
 
-    <p>X-Index</p>
-    <input type="range" min="50" max="275" value="157" id="xValue_eastCemetery">
 
-    <p>Y-Index</p>
-    <input type="range" min="22" max="141" value="93" id="yValue_eastCemetery">
+    <div class="eastControls">
+       <h1>East Lawn</h1>
+        <p>X-Index</p>
+        <input type="range" min="50" max="275" value="157" id="xValue_eastCemetery" class="slider">
 
-    <p>Search Radius</p>
-    <input type="range" min="5" max="20" value="10" id="rValue_eastCemetery">
+        <p>Y-Index</p>
+        <input type="range" min="22" max="141" value="93" id="yValue_eastCemetery" class="slider">
+
+        <p>Search Radius</p>
+        <input type="range" min="5" max="20" value="10" id="rValue_eastCemetery" class="slider">
+    </div>
+
 
     <br>
     <br>
@@ -47,26 +75,25 @@
 
 
     <script>
-        
         var c = document.getElementById("EastLawnCemetery");
         var ctx = c.getContext("2d");
-        
+
         $("input").change(function() {
-            
+
             var c = document.getElementById("EastLawnCemetery");
             var ctx = c.getContext("2d");
-            
+
             ctx.clearRect(0, 0, c.width, c.height);
-            
-            
-          
+
+
+
 
             var x_coord = document.getElementById("xValue_eastCemetery").value;
             var y_coord = document.getElementById("yValue_eastCemetery").value;
             var radius = document.getElementById("rValue_eastCemetery").value;
 
             console.log(`X: ${x_coord}, Y: ${y_coord}, R:${radius}`)
-            
+
             ctx.beginPath();
             ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
 
@@ -75,33 +102,33 @@
             ctx.fillStyle = 'blue';
 
             ctx.fill();
-            
+
         });
 
-        
-        
-        
-            var c = document.getElementById("EastLawnCemetery");
-            var ctx = c.getContext("2d");
-            
-            
 
-            var x_coord = document.getElementById("xValue_eastCemetery").value;
-            var y_coord = document.getElementById("yValue_eastCemetery").value;
-            var radius = document.getElementById("rValue_eastCemetery").value;
 
-            console.log(x_coord);
-            console.log(y_coord);
-            console.log(radius);
 
-            ctx.beginPath();
-            ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
+        var c = document.getElementById("EastLawnCemetery");
+        var ctx = c.getContext("2d");
 
-            ctx.lineWidth = .6;
-            ctx.globalAlpha = 0.3;
-            ctx.fillStyle = 'blue';
 
-            ctx.fill();
+
+        var x_coord = document.getElementById("xValue_eastCemetery").value;
+        var y_coord = document.getElementById("yValue_eastCemetery").value;
+        var radius = document.getElementById("rValue_eastCemetery").value;
+
+        console.log(x_coord);
+        console.log(y_coord);
+        console.log(radius);
+
+        ctx.beginPath();
+        ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
+
+        ctx.lineWidth = .6;
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = 'blue';
+
+        ctx.fill();
 
         //        var x_min = 60;
         //        var x_max = c.width;
@@ -119,6 +146,4 @@
             console.log($(this).height())
         })
     </script>
-</body>
-
-</html>
+</body></html>
