@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Find A Grave</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <h1>Augusta Cemetery Association</h1>
+    <nav>
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="aboutUs.html">About Us</a></li>
+        <li><a href="findAGrave.html">Find A Grave</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </nav>
+
+    <style>
+        canvas#EastLawnCemetery {
+
+            background-image: url("assets/images/eastLawnCemetery.jpg");
+            width: 1050px;
+            height: 961px;
+            /*            margin-left: 25%;*/
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Find a Grave</h1>
+
+    <h1>East Lawn</h1>
+
+    <p>X-Index</p>
+    <input type="range" min="50" max="275" value="157" id="xValue_eastCemetery">
+
+    <p>Y-Index</p>
+    <input type="range" min="22" max="141" value="93" id="yValue_eastCemetery">
+
+    <p>Search Radius</p>
+    <input type="range" min="5" max="20" value="10" id="rValue_eastCemetery">
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <canvas id="EastLawnCemetery"></canvas>
+
+
+    <script>
+        
+        var c = document.getElementById("EastLawnCemetery");
+        var ctx = c.getContext("2d");
+        
+        $("input").change(function() {
+            
+            var c = document.getElementById("EastLawnCemetery");
+            var ctx = c.getContext("2d");
+            
+            ctx.clearRect(0, 0, c.width, c.height);
+            
+            
+          
+
+            var x_coord = document.getElementById("xValue_eastCemetery").value;
+            var y_coord = document.getElementById("yValue_eastCemetery").value;
+            var radius = document.getElementById("rValue_eastCemetery").value;
+
+            console.log(`X: ${x_coord}, Y: ${y_coord}, R:${radius}`)
+            
+            ctx.beginPath();
+            ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
+
+            ctx.lineWidth = .6;
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = 'blue';
+
+            ctx.fill();
+            
+        });
+
+        
+        
+        
+            var c = document.getElementById("EastLawnCemetery");
+            var ctx = c.getContext("2d");
+            
+            
+
+            var x_coord = document.getElementById("xValue_eastCemetery").value;
+            var y_coord = document.getElementById("yValue_eastCemetery").value;
+            var radius = document.getElementById("rValue_eastCemetery").value;
+
+            console.log(x_coord);
+            console.log(y_coord);
+            console.log(radius);
+
+            ctx.beginPath();
+            ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
+
+            ctx.lineWidth = .6;
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = 'blue';
+
+            ctx.fill();
+
+        //        var x_min = 60;
+        //        var x_max = c.width;
+        //        var y_min = 0;
+        //        var y_max = c.height;
+        //
+        //        var x_perc = .5;
+        //        var y_perc = .5;
+        //        var c_radius = 10;
+        //
+        //        var x_coord = Math.floor(x_max * x_perc);
+        //        var y_coord = Math.floor(y_max * y_perc);
+        $("canvas").click(function() {
+            console.log($(this).width())
+            console.log($(this).height())
+        })
+    </script>
+</body>
+
+</html>
