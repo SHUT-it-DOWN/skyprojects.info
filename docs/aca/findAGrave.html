@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>Find A Grave</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <h1>Augusta Cemetery Association</h1>
-    <nav>
-        <li><a href="index.html">Home Page</a></li>
-        <li><a href="aboutUs.html">About Us</a></li>
-        <li><a href="findAGrave.html">Find A Grave</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-    </nav>
+
+    <!-- CSS IMPORTS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- JS IMPORTS -->
+    <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/load.js">
+    </script>
+    <script type="text/javascript" src="assets/js/graveSearch.js"></script>
+
+    <div class="fonts"></div>
 
     <style>
         canvas#EastLawnCemetery {
@@ -21,7 +25,7 @@
             margin-left: 40%;
             position: relative;
             bottom: 325px;
-            
+
         }
 
         .eastControls {
@@ -31,9 +35,9 @@
             display: inline-block;
             top: 400px;
             margin-left: 100px;
-            
+
         }
-        
+
         .eastControls p {
             position: relative;
             right: 75px;
@@ -49,13 +53,33 @@
 </head>
 
 <body>
-    <h1>Find a Grave</h1>
 
-    
+    <nav></nav>
 
+    <div id="pageTitle">
+        <h1>Find a Grave</h1>
+    </div>
+
+
+    <form onsubmit="return false;">
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname">
+
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname">
+
+
+        <input type="submit" value="Search" id="submit">
+
+
+        <div id="results"></div>
+
+    </form>
 
     <div class="eastControls">
-       <h1>East Lawn</h1>
+        <h1>East Lawn</h1>
         <p>X-Index</p>
         <input type="range" min="50" max="275" value="157" id="xValue_eastCemetery" class="slider">
 
@@ -147,4 +171,8 @@
             console.log($(this).height())
         })
     </script>
+
+    <footer></footer>
+
+
 </body></html>

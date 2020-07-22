@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "Red Rose";
+  src: url("fonts/RedRose-Bold.ttf");
+}
+
+body {
+  min-height: 100%;
+  height: auto;
+}
+
+body nav {
+  width: 100%;
+  background-color: purple;
+  display: block;
+  border-radius: 10px;
+  font-family: "Red Rose";
+  text-align: center;
+  height: auto;
+}
+
+body nav #logo {
+  width: 100%;
+  font-size: 30px;
+  color: white;
+  height: auto;
+  padding: 20px;
+}
+
+body nav ul {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  width: auto;
+  list-style: none;
+  margin: 0 auto;
+  bottom: 20px;
+}
+
+body nav ul li {
+  font-size: 25px;
+  list-style: none;
+  position: relative;
+  right: 0;
+  display: inline-block;
+  float: left;
+  padding: 5px;
+  margin: 5px;
+  width: auto;
+}
+
+body nav ul li a {
+  text-align: center;
+  width: 200px;
+  display: block;
+  clear: left;
+  text-decoration: none;
+  color: purple;
+  font-weight: bolder;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+body nav ul li:hover a {
+  color: black;
+}
+
+body #pageTitle {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body #pageTitle h1 {
+  position: relative;
+  display: inline-block;
+  top: 25px;
+  color: white;
+  font-family: "Red Rose";
+  text-align: center;
+  margin: 10px;
+  background-color: purple;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  clear: right;
+  margin-bottom: 100px;
+}
+
+body form {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  vertical-align: center;
+}
+
+body form input {
+  padding: 10px;
+  font-size: 18px;
+  width: 175px;
+}
+
+body form label {
+  padding: 10px;
+  font-size: 25px;
+  position: relative;
+  bottom: -4px;
+  font-weight: bold;
+}
+
+body #results {
+  padding-top: 20px;
+  font-size: 28px;
+}
+
+body footer {
+  background: purple;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  float: left;
+  z-index: 10;
+}
+
+body footer p {
+  color: white;
+  font-size: 24px;
+  font-family: "Red Rose";
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */
