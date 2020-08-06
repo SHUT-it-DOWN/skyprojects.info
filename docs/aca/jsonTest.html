@@ -1,0 +1,265 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Find A Grave</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- CSS IMPORTS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- JS IMPORTS -->
+    <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/load.js">
+    </script>
+    <script type="text/javascript" src="assets/js/graveSearch.js"></script>
+
+    <div class="fonts"></div>
+
+    <style>
+        canvas#EastLawnCemetery {
+
+            background-image: url("assets/images/eastLawnCemetery.jpg");
+            width: 1050px;
+            height: 961px;
+            margin-left: 40%;
+            position: relative;
+            bottom: 325px;
+
+        }
+
+        .eastControls {
+            width: 10%;
+            clear: left;
+            position: relative;
+            display: inline-block;
+            top: 400px;
+            margin-left: 100px;
+
+        }
+
+        .eastControls p {
+            position: relative;
+            right: 75px;
+            padding-top: 20px;
+        }
+
+        input.slider {
+            position: relative;
+            width: 300px;
+            right: 90px
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav></nav>
+
+    <div id="pageTitle">
+        <h1>Find a Grave</h1>
+    </div>
+
+
+    <form onsubmit="return false;">
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname">
+
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname">
+
+
+        <input type="submit" value="Search" id="submit">
+
+
+        <div id="results"></div>
+
+    </form>
+
+    <!--
+    <div class="eastControls">
+        <h1>East Lawn</h1>
+        <p>X-Index</p>
+        <input type="range" min="50" max="275" value="157" id="xValue_eastCemetery" class="slider">
+
+        <p>Y-Index</p>
+        <input type="range" min="22" max="141" value="93" id="yValue_eastCemetery" class="slider">
+
+        <p>Search Radius</p>
+        <input type="range" min="5" max="20" value="10" id="rValue_eastCemetery" class="slider">
+    </div>
+-->
+
+
+
+    <script>
+        function clean(s) {
+            return s.replace(/[^a-zA-Z ]/g, "");
+        }
+
+        function getDate(dateStr) {
+            console.log(dateStr)
+            var d = {}
+
+            dateArray = []
+            
+            function nan(a) {
+                if (Number.isNaN(a)) {
+                    return "Unknown"
+                } else {
+                    return a
+                }
+            }
+
+            if (dateStr.includes("-")) {
+                dateArray = dateStr.split("-")
+            } else {
+                dateArray[0] = dateStr
+            }
+
+
+            var dateLen = dateArray.length
+
+
+            switch (dateLen) {
+                case 3:
+                    d.year = parseInt(dateArray[2]);
+                    d.month = parseInt(dateArray[0]);
+                    d.day = parseInt(dateArray[1]);
+                    
+                    d.year = nan(d.year)
+                    d.month = nan(d.month)
+                    d.day = nan(d.day)
+                    
+                    
+                    break;
+                    
+                case 2:
+                    d.year = parseInt(dateArray[1]);
+                    d.month = parseInt(dateArray[0]);
+                    
+                    d.year = nan(d.year)
+                    d.month = nan(d.month)
+                    
+                    
+                    break;
+                    
+                case 1:
+                    d.year = parseInt(dateArray[0]);
+                    
+                    
+                    d.year = nan(d.year)
+                    
+                case '':
+                    d.year = "Unkown";
+                    break;
+            }
+            
+            return d
+            
+            
+
+
+//            var dateArray = date.split("-")
+            //            console.log(dateArray);
+
+//            console.log(d);
+
+        }
+
+        var count = 0;
+
+        $().ready(function() {
+
+
+            $.getJSON("json/graves.json", function(data) {
+
+                for (cemetery in data) {
+
+                    $("results").append(cemetery);
+
+                    for (blockNum in data[cemetery]) {
+
+                        for (lotNum in data[cemetery][blockNum]) {
+
+                            for (graveNum in data[cemetery][blockNum][lotNum]) {
+
+                                for (g in data[cemetery][blockNum][lotNum][graveNum]) {
+
+
+                                    var d = data[cemetery][blockNum][lotNum][graveNum][g]
+
+
+                                    var fName = d["fName"]
+                                    var mName = d["mName"]
+                                    var lName = d["lName"]
+
+                                    if (fName != "") {
+
+//                                        console.log(d)
+
+                                        var findAGrave = d["graveLink"]
+
+                                        
+
+                                        var dateOfBirth = getDate(d["dateOfBirth"])
+                                        var dateOfDeath = getDate(d["dateOfDeath"])
+                                        var burialDate = getDate(d["burialDate"])
+                                        var cemeteryLocation = cemetery.substring(0,4)
+                                        console.log(cemeteryLocation)
+                                        var fName_clean = clean(fName)
+                                        var lName_clean = clean(lName)
+                                        var profileImage = d["profilePicture"]
+                                        console.log(dateOfBirth)
+
+
+
+                                        //                                        if (mName != "") {
+                                        //                                            console.log(fName, lName);
+                                        //                                        } else {
+                                        //                                            console.log(fName, mName, lName);
+                                        //                                        }
+
+                                        if (profileImage == "") {
+                                            $("#results").append(`<div id="${fName_clean} ${lName_clean}" class="person_withoutProfile person"><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
+                                        } else {
+                                             $("#results").append(`<div id="${fName_clean} ${lName_clean}" class="person_withProfile person"><img src="${profileImage}" class="profilePicture"></img><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
+                                        }
+                                        
+                                        
+                                        
+
+                                        var nameID = $(`#${fName_clean} ${lName_clean}`);
+
+                                        nameID.append("<div id='graveInfo'></div>")
+
+                                        var graveInfo = $(`#${fName_clean} ${lName_clean} #graveInfo`);
+
+
+
+
+                                        count++;
+                                    }
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+                console.log(count);
+            });
+        })
+    </script>
+
+
+
+
+
+
+
+</body>
+
+<footer></footer></html>

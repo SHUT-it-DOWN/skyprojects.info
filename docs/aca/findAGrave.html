@@ -19,9 +19,9 @@
     <style>
         canvas#EastLawnCemetery {
 
-            background-image: url("assets/images/eastLawnCemetery.jpg");
-            width: 1050px;
-            height: 961px;
+            /*            background-image: url("assets/images/eastLawnCemetery.jpg");*/
+            width: auto;
+            height: 960px;
             margin-left: 40%;
             position: relative;
             bottom: 325px;
@@ -100,22 +100,78 @@
 
 
     <script>
-        var c = document.getElementById("EastLawnCemetery");
-        var ctx = c.getContext("2d");
+        var nativeWidth = 960; // the resolution the games is designed to look best in
+        var nativeHeight = 540;
 
+
+        var img = new Image();
+        img.src = "assets/images/eastLawnCemetery.jpg"
+        // the resolution of the device that is being used to play
+        var deviceWidth = window.innerWidth - 925; // please check for browser compatibility
+        var deviceHeight = window.innerHeight - 7.5;
+
+        var radius = 50;
+
+        var scaleFitNative = Math.min(deviceWidth / nativeWidth, deviceHeight / nativeHeight);
+
+
+        var c = document.getElementById("EastLawnCemetery");
+
+        c.style.width = deviceWidth + "px";
+        c.style.height = deviceHeight + "px";
+        c.width = deviceWidth;
+        c.height = deviceHeight;
+
+
+        var ctx = c.getContext("2d");
+        ctx.drawImage(img, 10, 10);
         $("input").change(function() {
 
             var c = document.getElementById("EastLawnCemetery");
             var ctx = c.getContext("2d");
 
             ctx.clearRect(0, 0, c.width, c.height);
-
+            ctx.drawImage(img, 10, 10);
 
 
 
             var x_coord = document.getElementById("xValue_eastCemetery").value;
             var y_coord = document.getElementById("yValue_eastCemetery").value;
-            var radius = document.getElementById("rValue_eastCemetery").value;
+            //            var radius = document.getElementById("rValue_eastCemetery").value;
+
+            console.log(`X: ${x_coord}, Y: ${y_coord}, R:${radius}`)
+
+            ctx.beginPath();
+            ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
+
+            ctx.lineWidth = .6;
+            //            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = 'blue';
+
+            ctx.fill();
+
+        });
+
+
+        $('canvas').click(function(e) { //Offset mouse Position
+
+
+
+
+            var posX = $(this).offset().left,
+                posY = $(this).offset().top;
+            //            alert((e.pageX - posX) + ' , ' + (e.pageY - posY));
+
+            var x_coord = e.pageX - posX;
+            var y_coord = e.pageY - posY;
+
+
+            var c = document.getElementById("EastLawnCemetery");
+            var ctx = c.getContext("2d");
+
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            //            var radius = document.getElementById("rValue_eastCemetery").value;
 
             console.log(`X: ${x_coord}, Y: ${y_coord}, R:${radius}`)
 
@@ -127,10 +183,10 @@
             ctx.fillStyle = 'blue';
 
             ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.drawImage(img, 10, 10);
 
         });
-
-
 
 
         var c = document.getElementById("EastLawnCemetery");
@@ -140,11 +196,13 @@
 
         var x_coord = document.getElementById("xValue_eastCemetery").value;
         var y_coord = document.getElementById("yValue_eastCemetery").value;
-        var radius = document.getElementById("rValue_eastCemetery").value;
+        //        var radius = document.getElementById("rValue_eastCemetery").value;
 
         console.log(x_coord);
         console.log(y_coord);
         console.log(radius);
+
+
 
         ctx.beginPath();
         ctx.arc(x_coord, y_coord, radius, 0, 2 * Math.PI, false);
@@ -154,7 +212,8 @@
         ctx.fillStyle = 'blue';
 
         ctx.fill();
-
+        ctx.globalAlpha = 1;
+        ctx.drawImage(img, 10, 10);
         //        var x_min = 60;
         //        var x_max = c.width;
         //        var y_min = 0;
