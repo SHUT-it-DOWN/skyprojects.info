@@ -127,10 +127,11 @@ body .person {
   text-align: center;
   width: 50%;
   padding-top: 20px;
+  height: auto;
 }
 
 body .person_withProfile {
-  height: 250px;
+  height: 300px;
 }
 
 body .person_withProfile .profilePicture {

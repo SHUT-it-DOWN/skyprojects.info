@@ -187,7 +187,9 @@
                             for (graveNum in data[cemetery][blockNum][lotNum]) {
 
                                 for (g in data[cemetery][blockNum][lotNum][graveNum]) {
-
+                                    
+                                    
+                                    console.log(cemetery, blockNum, lotNum, graveNum, g);
 
                                     var d = data[cemetery][blockNum][lotNum][graveNum][g]
 
@@ -223,22 +225,26 @@
                                         //                                        }
 
                                         if (profileImage == "") {
-                                            $("#results").append(`<div id="${fName_clean} ${lName_clean}" class="person_withoutProfile person"><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
+                                            $("#results").append(`<div id="${fName_clean}${lName_clean}" class="person_withProfile person"><img src="images/unknown.png" class="profilePicture"></img><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
                                         } else {
-                                             $("#results").append(`<div id="${fName_clean} ${lName_clean}" class="person_withProfile person"><img src="${profileImage}" class="profilePicture"></img><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
+                                            var append = $("#results").append(`<div id="${fName_clean}${lName_clean}" class="person_withProfile person"><img src="${profileImage}" class="profilePicture"></img><h1>${fName} ${lName} (${dateOfBirth.year}-${dateOfDeath.year}) - ${cemeteryLocation} lawn Cemetery</h1></div>`)
+                                            
+                                            
+//                                            append.append(`<h3>Block ${blockNum}, Lot ${lotNum} - Grave ${graveNum}${g}</h3>`);
                                         }
                                         
                                         
+                                        var latestPerson = $("#results div").last()
                                         
 
-                                        var nameID = $(`#${fName_clean} ${lName_clean}`);
+                                        var nameID = $(`#${fName_clean}${lName_clean}`);
 
                                         nameID.append("<div id='graveInfo'></div>")
 
-                                        var graveInfo = $(`#${fName_clean} ${lName_clean} #graveInfo`);
+                                        var graveInfo = $(`#${fName_clean}${lName_clean} #graveInfo`);
 
 
-
+                                        latestPerson.append(`<h3>Block ${blockNum}, Lot ${lotNum} - Grave ${graveNum}${g}</h3>`);
 
                                         count++;
                                     }
