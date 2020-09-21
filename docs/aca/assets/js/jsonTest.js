@@ -240,10 +240,10 @@ $().ready(function () {
             div.append(`<h3>${title}:</h3>`)
 
             if (typeof imagesArray == "string") {
-                div.append(`<img src="${imagesArray}" class="${addClass}">`);
+                div.append(`<img src="${imagesArray.replace("https", "http")}" class="${addClass}">`);
             } else if (Array.isArray(imagesArray) && imagesArray.length != 0) {
                 for (const i in imagesArray) {
-                    div.append(`<img src="${imagesArray[i]}" class="${addClass}">`);
+                    div.append(`<img src="${imagesArray[i].replace("https", "http")}" class="${addClass}">`);
                 }
             }
         }
