@@ -128,25 +128,25 @@ function getDate_string(dateObject) {
 
 $().ready(function () {
 
-    function observeImages() {
-        const targets = document.querySelectorAll('img');
-        const lazyLoad = target => {
-            const io = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const src = img.getAttribute('data-lazy');
-
-                        img.setAttribute('src', src);
-                        observer.disconnect();
-                    }
-                });
-            });
-            io.observe(target);
-        };
-        targets.forEach(lazyLoad);
-    }
+//    function observeImages() {
+//        const targets = document.querySelectorAll('img');
+//        const lazyLoad = target => {
+//            const io = new IntersectionObserver((entries, observer) => {
+//                entries.forEach(entry => {
+//
+//                    if (entry.isIntersecting) {
+//                        const img = entry.target;
+//                        const src = img.getAttribute('data-lazy');
+//
+//                        img.setAttribute('src', src);
+//                        observer.disconnect();
+//                    }
+//                });
+//            });
+//            io.observe(target);
+//        };
+//        targets.forEach(lazyLoad);
+//    }
 
     function getBlockID(selectedVal) {
         switch (selectedVal) {
@@ -240,10 +240,10 @@ $().ready(function () {
             div.append(`<h3>${title}:</h3>`)
 
             if (typeof imagesArray == "string") {
-                div.append(`<img data-lazy="${imagesArray}" class="${addClass}">`);
+                div.append(`<img src="${imagesArray}" class="${addClass}">`);
             } else if (Array.isArray(imagesArray) && imagesArray.length != 0) {
                 for (const i in imagesArray) {
-                    div.append(`<img data-lazy="${imagesArray[i]}" class="${addClass}">`);
+                    div.append(`<img src="${imagesArray[i]}" class="${addClass}">`);
                 }
             }
         }
@@ -314,7 +314,7 @@ $().ready(function () {
 
                                             $("#results").append(`
                                                 <div id="${fName_clean}${lName_clean}" class="imgFadeIn">
-                                                    <img data-lazy="${profileImage}" class="profilePicture"></img>
+                                                    <img src="${profileImage}" class="profilePicture"></img>
                                                     <h1>${fName} ${lName}<br>(${dateOfBirth.year} - ${dateOfDeath.year})</h1>
                                                     <h3>Block ${blockNum}, Lot ${lotNum} - Grave ${graveNum}${g}</h3>
                                                         
@@ -355,7 +355,7 @@ $().ready(function () {
 
         // Timeout / Delay for IntersectionObserver
         // *** Need to have the content generated first, in order for the IntersectionObserver to work properly. ***
-        setTimeout(observeImages, 100);
+//        setTimeout(observeImages, 100);
 
     }
 
