@@ -84,7 +84,7 @@ body #pageTitle h1 {
   background-color: purple;
   border-radius: 10px;
   text-align: center;
-  padding: 10px 40px;
+  padding: 10px;
   clear: right;
   margin-bottom: 100px;
 }
@@ -110,92 +110,42 @@ body form label {
   font-weight: bold;
 }
 
-body .center {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-body .center #blockID {
-  font-size: 1.5em;
-  padding: 10px;
-}
-
 body #results {
   padding-top: 20px;
   font-size: 28px;
 }
 
-body #results div {
-  height: auto;
+body .person {
+  margin: 0 auto;
   font-size: 16px;
   background-color: purple;
   color: white;
   outline-color: black;
   border-radius: 6px;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 1px;
+  margin-bottom: 10px;
   text-align: center;
   width: 50%;
   padding-top: 20px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-
-body #results div img {
-  padding-top: 30px;
-  width: 350px;
   height: auto;
 }
 
-body #results .moreDetails {
-  width: 100%;
-  z-index: 1;
+body .person_withProfile {
+  height: 300px;
 }
 
-body #results .moreDetails h2 {
-  background-color: white;
-  color: purple;
-  font-weight: bolder;
-  width: 50%;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-body #results .details {
-  width: 100%;
-  display: none;
-  text-align: left;
-  margin: 0 auto;
-}
-
-body #results .details img {
+body .person_withProfile .profilePicture {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  width: 50%;
-  height: auto;
+  padding-top: 5px;
+  height: 150px;
+  width: auto;
 }
 
-body #results .details .gravestone {
-  width: 60%;
-}
-
-body #results .details .obituary {
-  width: 80%;
-}
-
-body #results .details h3 {
+body .person_withoutProfile h1 {
   position: relative;
-  left: 25%;
-}
-
-body #results .details span {
-  color: white;
-  font-size: 1.25em;
-  font-weight: bolder;
+  right: 20px;
 }
 
 footer {
