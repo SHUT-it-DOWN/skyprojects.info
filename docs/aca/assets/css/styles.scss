@@ -256,3 +256,16 @@ footer {
     }
 
 }
+
+
+@media (max-width: 1000px) {
+    #results {
+        width: 100%;
+        .imgFadeIn {
+            width: 95%;
+
+            margin: 50px auto;
+        }
+
+    }
+}

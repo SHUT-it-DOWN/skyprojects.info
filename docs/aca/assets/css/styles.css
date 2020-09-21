@@ -217,4 +217,14 @@ footer p {
   font-family: "Red Rose";
   text-align: center;
 }
+
+@media (max-width: 1000px) {
+  #results {
+    width: 100%;
+  }
+  #results .imgFadeIn {
+    width: 95%;
+    margin: 50px auto;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
