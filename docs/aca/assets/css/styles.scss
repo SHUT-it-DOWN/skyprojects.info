@@ -233,6 +233,9 @@ body {
 
 
         .resultMessage {
+
+            
+
             width: 80%;
             background-color: purple;
             color: white;
@@ -244,6 +247,10 @@ body {
             span {
                 font-weight: bolder;
             }
+        }
+
+        .resultMessage:hover {
+            font-weight: bolder;
         }
 
         .errorMessage{

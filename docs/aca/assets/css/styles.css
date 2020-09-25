@@ -220,6 +220,10 @@ body #results .resultMessage span {
   font-weight: bolder;
 }
 
+body #results .resultMessage:hover {
+  font-weight: bolder;
+}
+
 body #results .errorMessage {
   width: 75%;
   background-color: #8a0909;
