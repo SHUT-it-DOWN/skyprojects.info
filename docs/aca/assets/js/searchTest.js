@@ -376,7 +376,7 @@ $().ready(function () {
 
     $("form").submit(function () {
 
-
+        window.stop();
         $results.empty()
         var $inputs = $('form :input');
         var values = {};
