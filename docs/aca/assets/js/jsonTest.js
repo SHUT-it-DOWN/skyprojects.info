@@ -383,5 +383,14 @@ $().ready(function () {
 
 
 $(document).on('click', '.moreDetails', function () {
+    
+    var message = $(this).text().trim();
+    
+    if (message == "More Details") {
+        $(this).html("<h2>Less Details</h2>");
+    } else {
+        $(this).html("<h2>More Details</h2>")
+    }
+    
     $(this).next().toggle(400, "swing");
 });

@@ -14,34 +14,11 @@
     <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="assets/js/load.js">
     </script>
-    <script type="text/javascript" src="assets/js/graveSearch.js"></script>
-
-
-
+    <!--    <script type="text/javascript" src="assets/js/graveSearch.js"></script>-->
 
     <div class="fonts"></div>
 
     <style>
-        
-        #results {
-            width: 60%;
-/*            background-color: purple;*/
-            color: white;
-            margin: 20px auto;
-            
-        }
-        .imgFadeIn {
-            margin: 40px;
-            background-color: purple;
-            padding: 40px;
-            border-radius: 30px;
-        }
-        img {
-                padding-top: 30px;
-                width: 350px;
-                height: auto;
-            }
-        
         canvas#EastLawnCemetery {
 
             background-image: url("assets/images/eastLawnCemetery.jpg");
@@ -158,46 +135,24 @@
     <div id="pageTitle">
         <h1>Find a Grave</h1>
     </div>
-    <div class="center">
-        <select name="block" id="blockID">
-            <option value="eastA">East Lawn - Block A</option>
-            <option value="eastB">East Lawn - Block B</option>
-            <option value="eastC">East Lawn - Block C</option>
-            <option value="east1">East Lawn - Block 1</option>
-            <option value="east2">East Lawn - Block 2</option>
-            <option value="east3">East Lawn - Block 3</option>
-            <option value="east4">East Lawn - Block 4</option>
 
-            <option value="west0">West Lawn - Block 0</option>
-            <option value="west1">West Lawn - Block 1</option>
-            <option value="west2">West Lawn - Block 2</option>
-            <option value="west3">West Lawn - Block 3</option>
-            <option value="west4">West Lawn - Block 4</option>
-            <option value="west5">West Lawn - Block 5</option>
 
-        </select>
-    </div>
 
 
     <form onsubmit="return false;">
 
-        <!--
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname">
+        <label for="fName_input">First Name:</label>
+        <input type="text" id="fName_input" name="fName_input" class="input">
 
-        <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname">
+        <label for="lName_input">Last Name:</label>
+        <input type="text" id="lName_input" name="lName_input" class="input">
 
         <input type="submit" value="Search" id="submit">
--->
-
-
-        <div id="results"></div>
 
     </form>
 
-
-    <script src="assets/js/jsonTest.js"></script>
+    <div id="results"></div>
+    <script src="assets/js/searchTest.js"></script>
 
 
 </body>

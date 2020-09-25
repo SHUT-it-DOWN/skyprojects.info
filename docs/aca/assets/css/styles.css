@@ -126,26 +126,34 @@ body #results {
   font-size: 28px;
 }
 
-body #results div {
+body #results .results {
   height: auto;
+  width: 60%;
   font-size: 16px;
-  background-color: purple;
-  color: white;
+  background-color: white;
+  color: purple;
   outline-color: black;
   border-radius: 6px;
   padding: 20px;
   border-radius: 15px;
   text-align: center;
-  width: 50%;
   padding-top: 20px;
   margin: 0 auto;
   margin-bottom: 20px;
 }
 
-body #results div img {
+body #results .results img {
   padding-top: 30px;
   width: 350px;
   height: auto;
+}
+
+body #results .results div {
+  background-color: purple;
+  color: white;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 50px;
 }
 
 body #results .moreDetails {
@@ -198,6 +206,34 @@ body #results .details span {
   font-weight: bolder;
 }
 
+body #results .resultMessage {
+  width: 80%;
+  background-color: purple;
+  color: white;
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 50px;
+}
+
+body #results .resultMessage span {
+  font-weight: bolder;
+}
+
+body #results .errorMessage {
+  width: 75%;
+  background-color: #8a0909;
+  color: white;
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+body #results .errorMessage span {
+  font-weight: bolder;
+}
+
 footer {
   background: purple;
   height: auto;
@@ -218,13 +254,19 @@ footer p {
   text-align: center;
 }
 
-@media (max-width: 1000px) {
-  #results {
+@media (max-width: 1200px) {
+  body {
     width: 100%;
   }
-  #results .imgFadeIn {
+  body #results {
+    width: 100%;
+  }
+  body #results .resultMessage {
+    font-size: 1em;
     width: 95%;
-    margin: 50px auto;
+  }
+  body #results .results {
+    width: 90%;
   }
 }
 /*# sourceMappingURL=styles.css.map */

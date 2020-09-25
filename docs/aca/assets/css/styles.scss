@@ -147,26 +147,34 @@ body {
         padding-top: 20px;
         font-size: 28px;
 
-        div {
+        .results {
             height: auto;
+            width: 60%;
             font-size: 16px;
-            background-color: purple;
-            color: white;
+            background-color: white;
+            color: purple;
             outline-color: black;
             border-radius: 6px;
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            width: 50%;
+            
             padding-top: 20px;
             margin: 0 auto;
             margin-bottom: 20px;
-            
 
             img {
                 padding-top: 30px;
                 width: 350px;
                 height: auto;
+            }
+
+            div {
+                background-color: purple;
+                color: white;
+                margin: 30px auto;
+                padding: 20px;
+                border-radius: 50px;
             }
         }
 
@@ -222,6 +230,35 @@ body {
                 font-weight: bolder;
             }
         }
+
+
+        .resultMessage {
+            width: 80%;
+            background-color: purple;
+            color: white;
+            margin: 30px auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 50px;
+
+            span {
+                font-weight: bolder;
+            }
+        }
+
+        .errorMessage{
+            width: 75%;
+            background-color: rgb(138, 9, 9);
+            color: white;
+            margin: 30px auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 25px;
+
+            span {
+                font-weight: bolder;
+            }
+        }
         
     }
 
@@ -258,14 +295,23 @@ footer {
 }
 
 
-@media (max-width: 1000px) {
-    #results {
+@media (max-width: 1200px) {
+    body {
+
         width: 100%;
-        .imgFadeIn {
-            width: 95%;
 
-            margin: 50px auto;
+        #results {
+            width: 100%;
+            .resultMessage {
+                font-size: 1em;
+                width: 95%;
+            }
+
+            .results {
+                width: 90%;
+            }
+            
         }
-
     }
+    
 }
