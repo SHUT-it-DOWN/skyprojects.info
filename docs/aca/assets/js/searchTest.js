@@ -127,7 +127,7 @@ $().ready(function () {
 
     var $results = $("#results")
 
-    function getMatches(fName_input, lName_input) {
+    function getMatches(fName_input, lName_input, sortOption) {
 
         $results.empty();
 
@@ -148,6 +148,32 @@ $().ready(function () {
             var lName_inputLower = lName_input.toLowerCase();
             var count = 0;
 
+            var compareObjects = function(a, b) {
+
+                var fName_a = a.fName.toLowerCase();
+                var fName_b = b.fName.toLowerCase();
+
+                var lName_a = a.lName.toLowerCase();
+                var lName_b = b.lName.toLowerCase();
+
+                
+                if (fName_a < fName_b) {
+                    return -1
+                }
+                
+                if (fName_a > fName_b) {
+                    return 1
+                }
+
+                if (lName_a < lName_b) {
+                    return -1;
+                }
+                
+                if (lName_a > lName_b) {
+                    return 1
+                }
+                
+            }
 
             for (cemetery in data) {
 
@@ -194,17 +220,43 @@ $().ready(function () {
                 }
             }
 
+            if (sortOption == "name") {
+                exactMatch.sort(compareObjects);
+                fNameMatch.sort(compareObjects);
+                lNameMatch.sort(compareObjects);
+            }
+            
+            
+
+
+            console.log(fNameMatch);
 
             //TODO: Print RESULTS
-
-            printPersonRusult(exactMatch, "Here are the exact matches for", original_fName, original_lName, "exactMatch", true, false)
+            if (exactMatch.length > 1) {
+                 printPersonRusult(exactMatch, "There are " + exactMatch.length + " exact matches for", original_fName, original_lName, "exactMatch", true, false)
+            } else if (exactMatch.length == 1) {
+                printPersonRusult(exactMatch, "There is " + exactMatch.length + " exact match for", original_fName, original_lName, "exactMatch", true, false)
+            }
+           
 
             if (fNameMatch.length != 0) {
-                printPersonRusult(fNameMatch, "Here are some similar people with the first name", original_fName, "", "firstNameMatch", false, true)
+                
+                if (fNameMatch.length > 1) {
+                    printPersonRusult(fNameMatch, "Here are " + fNameMatch.length + " matches for the first name", original_fName, "", "firstNameMatch", false, true)
+                } else if (fNameMatch.length == 1) {
+                    printPersonRusult(fNameMatch, "There is " + fNameMatch.length + " match for the first name", original_fName, "", "firstNameMatch", false, true)
+                }
+                
             }
 
             if (lNameMatch.length != 0) {
-                printPersonRusult(lNameMatch, "Here are some similar people with the last name", "", original_lName, "lastNameMatch", false, true)
+                
+                if (lNameMatch.length > 1) {
+                    printPersonRusult(lNameMatch, "Here are " + lNameMatch.length + " matches for the last name", "", original_lName, "lastNameMatch", false, true)
+                } else if (lNameMatch.length == 1){
+                    printPersonRusult(lNameMatch, "There is " + lNameMatch.length + " match for the last name", "", original_lName, "lastNameMatch", false, true)
+                }            
+                
             }
 
         });
@@ -235,14 +287,14 @@ $().ready(function () {
 
 
         if (displayPerson && displayName != "") {
-            
+
             if (results.length != 0) {
                 $results.append(`<h1 class='resultMessage'>${messageTitle}: <span>${displayName}</h1>`);
                 $results.append(`<div class="results" id="${id}"></div>`)
             } else {
                 $results.append(`<h1 class='errorMessage'>Sorry we couldn't find a match for: <span>${displayName}</h1>`);
             }
-            
+
 
 
 
@@ -329,6 +381,8 @@ $().ready(function () {
 
 
 
+
+
     //
     // APPEND FUNCTNIONS
     //  
@@ -380,6 +434,10 @@ $().ready(function () {
         $results.empty()
         var $inputs = $('form :input');
         var values = {};
+        var sortOption = $("#sortSelect").val();
+        
+        console.log(sortOption);
+        
 
         $inputs.each(function () {
             values[this.name] = $(this).val();
@@ -399,12 +457,12 @@ $().ready(function () {
 
         if (fInput != "") {
             if (lInput != "") {
-                getMatches(fInput, lInput)
+                getMatches(fInput, lInput, sortOption)
             } else {
-                getMatches(fInput, "")
+                getMatches(fInput, "", sortOption)
             }
         } else if (lInput != "") {
-            getMatches("", lInput)
+            getMatches("", lInput, sortOption)
         } else {
 
             $(this).closest('form').find("input[type=text], textarea").val("");

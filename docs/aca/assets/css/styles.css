@@ -110,6 +110,14 @@ body form label {
   font-weight: bold;
 }
 
+body form select {
+  width: 175px;
+  font-size: 18px;
+  text-align-last: center;
+  height: 50px;
+  margin-right: 10px;
+}
+
 body .center {
   width: 100%;
   margin: 0 auto;
