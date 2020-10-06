@@ -347,7 +347,7 @@ $().ready(function () {
         $(`#results #${id}`).last().append(`
             <div id="${fName_clean}${lName_clean}" class="imgFadeIn">
                 <img src="${profileImage}" class="profilePicture"></img>
-                <h1>${fName} ${lName}<br>(${dateOfBirth.year} - ${dateOfDeath.year})</h1>
+                <h1><span class='fullName'>${fName} ${lName}</span><br>(${dateOfBirth.year} - ${dateOfDeath.year})</h1>
                 <h3>${cemetery} - Block ${blockNum}, Lot ${lotNum} : Grave ${graveNum}${graveSubNum}</h3>
 
                 <div class="moreDetails">

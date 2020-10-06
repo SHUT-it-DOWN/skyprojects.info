@@ -3,6 +3,20 @@
     src: url("fonts/RedRose-Bold.ttf");
 }
 
+@font-face {
+    font-family: "Cursive";
+    src: url("fonts/cursive.ttf")
+}
+
+// Article Title - Secular One
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+// Article Text - Nunito
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+// Article Hours - Quicksand
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
 body {
     min-height: 100%;
     height: auto;
@@ -44,7 +58,7 @@ body {
 
                 right: 0;
                 display: inline-block;
-                float: left;
+                // float: left;
                 padding: 5px;
                 margin: 5px;
                 width: auto;
@@ -80,7 +94,7 @@ body {
         margin: 0 auto;
         // margin-left: 50%;
         text-align: center;
-        
+        height: auto;
 
         h1 {
             position: relative;
@@ -104,6 +118,67 @@ body {
             margin-bottom: 100px;
         }
 
+
+    }
+
+    article {
+
+        text-align: center;
+       
+        margin-bottom: 60px;
+
+        h1.title {
+            font-size: 50px;
+            font-family: "Secular One";
+            color: purple;
+            margin: 0;
+        }
+
+        p {
+            font-size: 30px;
+            text-align: left;
+            position: relative;
+            left: 33%;
+            margin: 0 auto;
+            font-family: "Nunito";
+            font-weight: bold;
+            padding: 10px 0;
+
+            a {
+                text-decoration: none;
+                color: rgb(150, 3, 187);
+            }
+
+            a:hover {
+                color: rgb(16, 154, 235);
+            }
+        }
+
+        h2 {
+            font-family: "Secular One";
+            font-size: 2.75em;
+            margin: 5px;
+        }
+
+        ul {
+            li {
+                list-style: none;
+                font-family: "Quicksand";
+                font-size: 2em;
+                padding: 2.5px;
+
+                span.day {
+                    font-weight: bolder;
+                    color: black;
+                }
+
+                span.hours {
+                    color: purple;
+                    font-weight: bold;
+                }
+
+            }
+        }
 
     }
 
@@ -185,6 +260,13 @@ body {
                 margin: 30px auto;
                 padding: 20px;
                 border-radius: 50px;
+
+                // span.fullName {
+                //     font-family: "Cursive";
+                //     font-size: 2em;
+                //     font-weight: bold;
+                // }
+
             }
         }
 

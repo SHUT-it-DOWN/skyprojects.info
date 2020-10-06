@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 @font-face {
   font-family: "Red Rose";
   src: url("fonts/RedRose-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Cursive";
+  src: url("fonts/cursive.ttf");
 }
 
 body {
@@ -43,7 +51,6 @@ body nav ul li {
   position: relative;
   right: 0;
   display: inline-block;
-  float: left;
   padding: 5px;
   margin: 5px;
   width: auto;
@@ -71,6 +78,7 @@ body #pageTitle {
   position: relative;
   margin: 0 auto;
   text-align: center;
+  height: auto;
 }
 
 body #pageTitle h1 {
@@ -87,6 +95,61 @@ body #pageTitle h1 {
   padding: 10px 40px;
   clear: right;
   margin-bottom: 100px;
+}
+
+body article {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+body article h1.title {
+  font-size: 50px;
+  font-family: "Secular One";
+  color: purple;
+  margin: 0;
+}
+
+body article p {
+  font-size: 30px;
+  text-align: left;
+  position: relative;
+  left: 33%;
+  margin: 0 auto;
+  font-family: "Nunito";
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+body article p a {
+  text-decoration: none;
+  color: #9603bb;
+}
+
+body article p a:hover {
+  color: #109aeb;
+}
+
+body article h2 {
+  font-family: "Secular One";
+  font-size: 2.75em;
+  margin: 5px;
+}
+
+body article ul li {
+  list-style: none;
+  font-family: "Quicksand";
+  font-size: 2em;
+  padding: 2.5px;
+}
+
+body article ul li span.day {
+  font-weight: bolder;
+  color: black;
+}
+
+body article ul li span.hours {
+  color: purple;
+  font-weight: bold;
 }
 
 body form {

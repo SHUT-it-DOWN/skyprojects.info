@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Thasadith&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+html body h1 {
+  font-family: "Secular One";
+  font-size: 85px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  color: #730a8d;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
+}
+
+html body p {
+  font-size: 50px;
+  text-align: center;
+  font-family: "Thasadith";
+}
+
+html body div {
+  margin: 100px 0;
+}
+
+html body div ul {
+  width: 30%;
+  margin: 0 auto;
+}
+
+html body div ul li {
+  font-size: 30px;
+  color: black;
+}
+
+html body div ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+html body div ul li a:hover {
+  color: #730a8d;
+}
+
+html body div .active {
+  font-family: "Courier Prime";
+}
+
+html body div .finished {
+  font-family: "Fredoka One";
+}
+/*# sourceMappingURL=styles.css.map */
