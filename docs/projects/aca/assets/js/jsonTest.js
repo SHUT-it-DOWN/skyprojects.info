@@ -251,6 +251,10 @@ $().ready(function () {
 
     function getGrave(graveLocation, blockID) {
         $.getJSON("json/graves.json", function (data) {
+            
+            function checkURL(url) {
+                return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+            }
 
             for (cemetery in data) {
 
@@ -303,13 +307,31 @@ $().ready(function () {
 //                                            }
 
 
-//                                            console.log(lotNum, graveNum, fName);
+                                            
 
 
-
+                                            // MAKE SURE ALL PROFILE LINKS ARE VALID
                                             if (profileImage == "") {
                                                 profileImage = "images/unknown.png"
+                                            } 
+//                                            else {
+//                                                if (checkURL(profileImage) == false) {
+//                                                    console.log(cemetery, blockNum, lotNum, graveNum, g);
+//                                                }
+//                                            }
+                                            
+                                            // MAKE SURE OTHER IMAGES ARE VALID
+                                            
+                                            if (profileImage != []) {
+                                                for (i in profileImage) {
+                                                    if (checkURL(profileImage[i]) != false) {
+                                                        console.log(cemetery, blockNum, lotNum, graveNum, g);
+                                                    }
+                                                }
                                             }
+                                            
+                                            
+                                            
 
 
                                             $("#results").append(`
