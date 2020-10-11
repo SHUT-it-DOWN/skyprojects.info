@@ -298,12 +298,12 @@ $().ready(function () {
                                             var gravestoneImages = d["gravePictures"]
                                             var warsArray = d["wars"]
 
-                                            if (obituaryImages != "") {
-                                                console.log(obituaryImages, lotNum, graveNum, fName, lName);
-                                            }
+//                                            if (obituaryImages != "") {
+//                                                console.log(obituaryImages, lotNum, graveNum, fName, lName);
+//                                            }
 
 
-
+//                                            console.log(lotNum, graveNum, fName);
 
 
 
