@@ -148,7 +148,7 @@ $().ready(function () {
             var lName_inputLower = lName_input.toLowerCase();
             var count = 0;
 
-            var compareObjects = function(a, b) {
+            var compareObjects = function (a, b) {
 
                 var fName_a = a.fName.toLowerCase();
                 var fName_b = b.fName.toLowerCase();
@@ -156,11 +156,11 @@ $().ready(function () {
                 var lName_a = a.lName.toLowerCase();
                 var lName_b = b.lName.toLowerCase();
 
-                
+
                 if (fName_a < fName_b) {
                     return -1
                 }
-                
+
                 if (fName_a > fName_b) {
                     return 1
                 }
@@ -168,11 +168,11 @@ $().ready(function () {
                 if (lName_a < lName_b) {
                     return -1;
                 }
-                
+
                 if (lName_a > lName_b) {
                     return 1
                 }
-                
+
             }
 
             for (cemetery in data) {
@@ -225,44 +225,55 @@ $().ready(function () {
                 fNameMatch.sort(compareObjects);
                 lNameMatch.sort(compareObjects);
             }
-            
-            
 
 
-            console.log(fNameMatch);
+            var isExactMatch = exactMatch.length >= 1
+            var isFNameMatch = fNameMatch.length >= 1
+            var isLNameMatch = lNameMatch.length >= 1
+
+
+
+
+//            console.log(fNameMatch);
 
             //TODO: Print RESULTS
-            if (exactMatch.length > 1) {
-                 printPersonRusult(exactMatch, "There are " + exactMatch.length + " exact matches for", original_fName, original_lName, "exactMatch", true, false)
-            } else if (exactMatch.length == 1) {
-                printPersonRusult(exactMatch, "There is " + exactMatch.length + " exact match for", original_fName, original_lName, "exactMatch", true, false)
-            }
-           
-
-            if (fNameMatch.length != 0) {
-                
-                if (fNameMatch.length > 1) {
-                    printPersonRusult(fNameMatch, "Here are " + fNameMatch.length + " matches for the first name", original_fName, "", "firstNameMatch", false, true)
-                } else if (fNameMatch.length == 1) {
-                    printPersonRusult(fNameMatch, "There is " + fNameMatch.length + " match for the first name", original_fName, "", "firstNameMatch", false, true)
+            if (isExactMatch) {
+                if (exactMatch.length > 1) {
+                    printPersonRusult(exactMatch, "There are " + exactMatch.length + " exact matches for", original_fName, original_lName, "exactMatch", false)
+                } else if (exactMatch.length == 1) {
+                    printPersonRusult(exactMatch, "There is " + exactMatch.length + " exact match for", original_fName, original_lName, "exactMatch", false)
                 }
-                
+            } else if (isFNameMatch == false && isLNameMatch == false) {
+                $results.append(`<h1 class='errorMessage'>Sorry we couldn't find any results for: <span>${original_fName} ${original_lName}</h1>`);
+            } else {
+                $results.append(`<h1 class='errorMessage'>Sorry we couldn't find a exact match for: <span>${original_fName} ${original_lName}</h1>`);
             }
 
-            if (lNameMatch.length != 0) {
-                
+
+            if (isFNameMatch) {
+
+                if (fNameMatch.length > 1) {
+                    printPersonRusult(fNameMatch, "Here are " + fNameMatch.length + " matches for the first name", original_fName, "", "firstNameMatch", true)
+                } else if (fNameMatch.length == 1) {
+                    printPersonRusult(fNameMatch, "There is " + fNameMatch.length + " match for the first name", original_fName, "", "firstNameMatch", true)
+                }
+
+            }
+
+            if (isLNameMatch) {
+
                 if (lNameMatch.length > 1) {
-                    printPersonRusult(lNameMatch, "Here are " + lNameMatch.length + " matches for the last name", "", original_lName, "lastNameMatch", false, true)
-                } else if (lNameMatch.length == 1){
-                    printPersonRusult(lNameMatch, "There is " + lNameMatch.length + " match for the last name", "", original_lName, "lastNameMatch", false, true)
-                }            
-                
+                    printPersonRusult(lNameMatch, "Here are " + lNameMatch.length + " matches for the last name", "", original_lName, "lastNameMatch", true)
+                } else if (lNameMatch.length == 1) {
+                    printPersonRusult(lNameMatch, "There is " + lNameMatch.length + " match for the last name", "", original_lName, "lastNameMatch", true)
+                }
+
             }
 
         });
     }
 
-    function printPersonRusult(results, messageTitle, fName = fName_input, lName = lName_input, id = 'defautlResult', errorMsg = false, hidden = false) {
+    function printPersonRusult(results, messageTitle, fName = fName_input, lName = lName_input, id = 'defautlResult', hidden = false) {
 
         //  TODO: Sort results, and display the people
         var displayPerson = false
@@ -286,6 +297,7 @@ $().ready(function () {
         }
 
 
+
         if (displayPerson && displayName != "") {
 
             if (results.length != 0) {
@@ -302,8 +314,6 @@ $().ready(function () {
                 displayPeople(results[d], id, hidden);
             }
 
-        } else if (errorMsg) {
-            $results.append(`<h1 class='errorMessage'>Sorry we couldn't find a match for: <span>${displayName}</h1>`);
         }
 
     }
@@ -435,16 +445,16 @@ $().ready(function () {
         var $inputs = $('form :input');
         var values = {};
         var sortOption = $("#sortSelect").val();
-        
-        console.log(sortOption);
-        
+
+//        console.log(sortOption);
+
 
         $inputs.each(function () {
             values[this.name] = $(this).val();
         });
 
         function filterInput(name) {
-            console.log(name, typeof name)
+//            console.log(name, typeof name)
             if (name != "" && typeof name == "string") {
                 return name.trim()
             } else {
@@ -487,6 +497,6 @@ $(document).on('click', '.moreDetails', function () {
 
 
 $(document).on('click', '.resultMessage', function () {
-    console.log("clicked")
+//    console.log("clicked")
     $(this).next(".results").toggle(400, "swing")
 });
